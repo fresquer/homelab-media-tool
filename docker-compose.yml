@@ -1,0 +1,13 @@
+services:
+  media-tool:
+    build: .
+    container_name: media-tool
+    restart: unless-stopped
+    ports:
+      - "5555:5555"
+    volumes:
+      - /:/host                  # acceso al filesystem del host — configura rutas desde la app
+      - ./data:/app/data         # persiste la base de datos SQLite
+    environment:
+      - NODE_ENV=production
+      - DATA_DIR=/app/data
