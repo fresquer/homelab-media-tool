@@ -24,10 +24,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/db ./db
 
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-RUN mkdir -p /app/data && chown appuser:appgroup /app/data
-
-USER appuser
+RUN mkdir -p /app/data
 
 EXPOSE 5555
 
